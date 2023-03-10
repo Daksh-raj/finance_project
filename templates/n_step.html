@@ -1,0 +1,123 @@
+{%extends "base1.html"%}
+{% block body%}
+<div class="container-fluid px-0">
+  <img
+    src="/static/option.jpg"
+    class="d-block w-100"
+    height="500px"
+    alt="Error image loading"
+  />
+</div>
+<div class="container">
+  <h1 class="text-center">Option-Price Calculator</h1>
+  <h2>Info Required</h2>
+  <form method="POST" action="/n_step">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="strike" class="form-label">Strike-Price</label>
+      <input
+        type="text"
+        class="form-control"
+        id="strike"
+        name="strike"
+        placeholder="Enter the Strike-Price of the option"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="current" class="form-label">Current-Stock-Price</label>
+      <input
+        type="text"
+        class="form-control"
+        id="current"
+        name="current"
+        placeholder="Enter the Current Price"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="type" class="form-label">Type-of-option</label>
+      <input
+        type="text"
+        class="form-control"
+        id="type"
+        name="type"
+        placeholder="Enter type of option"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="rate" class="form-label">Risk-Free-Rate(Decimal Value)</label>
+      <input
+        type="number"
+        step="0.001"
+        class="form-control"
+        id="rate"
+        name="rate"
+        placeholder="Enter risk-free-rate per annum in decimal format"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="timeperiod" class="form-label">Time-period(Years)</label>
+      <input
+        type="number"
+        step="0.001"
+        class="form-control"
+        id="timeperiod"
+        name="timeperiod"
+        placeholder="Enter the time-period in years"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="binomial" class="form-label">Number of Binomial Trees</label>
+      <input
+        type="number"
+        step="0.001"
+        class="form-control"
+        id="binomial"
+        name="binomial"
+        placeholder="Enter the number of binomial trees"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="upfactor" class="form-label">up-factor</label>
+      <input
+        type="number"
+        step="0.001"
+        class="form-control"
+        id="upfactor"
+        name="upfactor"
+        placeholder="Enter the up-factor"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="downfactor" class="form-label">down-factor</label>
+      <input
+        type="number"
+        step="0.001"
+        class="form-control"
+        id="downfactor"
+        name="downfactor"
+        placeholder="Enter the down-factor"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <br />
+  typeofOption={{type}}<br />
+  rate={{rate}}<br />
+  timeperiod={{timeperiod}}<br />
+  strikeprice={{strike}}<br />
+  currentstockprice={{current}}<br />
+  binomialTrees={{binomial}}<br />
+  upfactor={{upfactor}}<br />
+  downfactor={{downfactor}}<br />
+  OptionPrice={{optionPrice}}
+</div>
+
+{% endblock body%}
